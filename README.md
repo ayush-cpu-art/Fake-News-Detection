@@ -1,4 +1,4 @@
-# 📰 Fake News Detection
+#  Fake News Detection
 
 An end-to-end Machine Learning and MLOps project for classifying news statements as **Fake** or **True** using TF-IDF feature extraction and multiple machine learning models.
 
@@ -6,68 +6,92 @@ The project includes model training, experiment tracking with MLflow, a FastAPI 
 
 ---
 
-## 🚀 Features
+##  Features
 
-- 🧹 Data preprocessing and text cleaning
-- 🔤 TF-IDF feature engineering with unigram and bigram features
-- 🤖 Multiple ML models:
+-  Data preprocessing and text cleaning
+-  TF-IDF feature engineering with unigram and bigram features
+-  Multiple ML models:
   - Logistic Regression
   - Multinomial Naive Bayes
   - Calibrated Linear SVM
-- 📊 Model evaluation using:
+-  Model evaluation using:
   - Accuracy
   - Precision
   - Recall
   - F1-score
-- 🧪 MLflow experiment tracking
-- 📦 MLflow model artifact tracking
-- ⚡ FastAPI REST API
-- 🎨 Streamlit web interface
-- 🐳 Docker containerization
-- 🐳 Docker Compose
-- ✅ Pytest automated testing
-- 🔄 GitHub Actions CI
-- 📁 Modular project structure
+-  MLflow experiment tracking
+-  MLflow model artifact tracking
+-  FastAPI REST API
+-  Streamlit web interface
+-  Docker containerization
+-  Docker Compose
+-  Pytest automated testing
+-  GitHub Actions CI
+-  Modular project structure
 
 ---
 
-## 🧠 Machine Learning Pipeline
+##  Machine Learning Pipeline
 
 ```text
 Raw News Dataset
+
        ↓
+
 Data Cleaning
+
        ↓
+
 Remove Conflicting Labels
+
        ↓
+
 Duplicate Removal
+
        ↓
+
 Train/Test Split
+
        ↓
+
 TF-IDF Vectorization
+
        ↓
+
 ┌──────────────────────────────┐
 │ Logistic Regression          │
 │ Multinomial Naive Bayes      │
 │ Calibrated Linear SVM        │
 └──────────────────────────────┘
+
        ↓
+
 Model Evaluation
+
        ↓
+
 MLflow Experiment Tracking
+
        ↓
+
 Saved Model + Vectorizer
+
        ↓
+
 FastAPI Inference API
+
        ↓
+
 Docker Container
+
        ↓
+
 Streamlit Frontend
 ```
 
 ---
 
-## 📊 Dataset
+##  Dataset
 
 This project uses the **IFND (Indian Fake News Dataset)** containing news statements labeled as either **True** or **Fake**.
 
@@ -128,21 +152,28 @@ models/tfidf_vectorizer.pkl
 
 ---
 
-## 🤖 Model Training & Results
+##  Model Training & Results
 
 Three machine learning models were trained and evaluated using the TF-IDF feature representation.
 
-| Model | Accuracy | Weighted Precision | Weighted Recall | Weighted F1-Score |
-|---|---:|---:|---:|---:|
-| Logistic Regression | 95.10% | 95.10% | 95.10% | 95.10% |
-| Multinomial Naive Bayes | 94.69% | 94.69% | 94.69% | 94.69% |
-| Calibrated Linear SVM | **95.92%** | **95.92%** | **95.92%** | **95.92%** |
+| Model | Accuracy | Macro F1-Score |
+|---|---:|---:|
+| Logistic Regression | 95.10% | 94% |
+| Multinomial Naive Bayes | 94.69% | 94% |
+| Calibrated Linear SVM | **95.92%** | **95%** |
 
 ### Classification Performance
 
 The **Calibrated Linear SVM** achieved an accuracy of **95.92%** on the held-out test set.
 
-It is used as the inference model in the FastAPI application.
+| Class | Precision | Recall | F1-Score |
+|---|---:|---:|---:|
+| Fake | 0.97 | 0.91 | 0.94 |
+| True | 0.96 | 0.99 | 0.97 |
+| Macro Average | 0.96 | 0.95 | 0.95 |
+| Weighted Average | 0.96 | 0.96 | 0.96 |
+
+The Calibrated Linear SVM is used as the inference model in the FastAPI application.
 
 The trained models are stored in:
 
@@ -157,7 +188,7 @@ The Linear SVM uses `CalibratedClassifierCV`, allowing the API to return a calib
 
 ---
 
-## 🧪 MLflow Experiment Tracking
+##  MLflow Experiment Tracking
 
 MLflow is used to track machine learning experiments, parameters, metrics, training time, and model artifacts.
 
@@ -194,7 +225,7 @@ Model artifacts are logged for each trained model, making it possible to compare
 
 ---
 
-## ⚡ FastAPI Inference API
+##  FastAPI Inference API
 
 The trained Calibrated Linear SVM model is exposed through a REST API built with FastAPI.
 
@@ -252,18 +283,18 @@ http://127.0.0.1:8000/docs
 
 ---
 
-## 🎨 Streamlit Frontend
+##  Streamlit Frontend
 
 A Streamlit web interface provides a simple way for users to interact with the Fake News Detection API.
 
 ### Features
 
-- 📝 News statement input
-- ⚡ One-click prediction
-- 🚨 Fake / True classification
-- 📊 Model confidence display
-- 🔗 FastAPI backend integration
-- ⚠️ API connection error handling
+-  News statement input
+-  One-click prediction
+-  Fake / True classification
+-  Model confidence display
+-  FastAPI backend integration
+-  API connection error handling
 
 ### Running the Frontend
 
@@ -283,7 +314,35 @@ The frontend sends the entered news statement to the FastAPI `/predict` endpoint
 
 ---
 
-## 🐳 Docker & Docker Compose
+## 📸 Screenshots
+
+### Streamlit Home Page
+
+![Streamlit Home Page](screenshots/home-page.png)
+
+### Prediction Result
+
+![Prediction Result](screenshots/prediction.png)
+
+### FastAPI Swagger Documentation
+
+![FastAPI Swagger](screenshots/fastapi-swagger.png)
+
+### API Health Check
+
+![API Health](screenshots/api-health.png)
+
+### MLflow Experiment Tracking
+
+![MLflow](screenshots/mlflow.png)
+
+### GitHub Actions
+
+![GitHub Actions](screenshots/github-actions.png)
+
+---
+
+##  Docker & Docker Compose
 
 The FastAPI application is containerized using Docker to provide a consistent and reproducible runtime environment.
 
@@ -333,7 +392,7 @@ docker compose down
 
 ---
 
-## 🧪 Testing & Continuous Integration
+##  Testing & Continuous Integration
 
 The project includes automated tests to validate both the preprocessing pipeline and FastAPI endpoints.
 
@@ -381,7 +440,7 @@ This helps ensure that new changes do not break existing functionality.
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```text
 Fake News Detection/
@@ -415,6 +474,14 @@ Fake News Detection/
 │   ├── preprocessing.ipynb
 │   └── model_training.ipynb
 │
+├── screenshots/
+│   ├── api-health.png
+│   ├── fastapi-swagger.png
+│   ├── github-actions.png
+│   ├── home-page.png
+│   ├── mlflow.png
+│   └── prediction.png
+│
 ├── src/
 │   ├── __init__.py
 │   ├── data_preprocessing.py
@@ -443,6 +510,7 @@ Fake News Detection/
 | `frontend/` | Streamlit user interface |
 | `models/` | Trained ML models and TF-IDF vectorizer |
 | `notebooks/` | Exploratory analysis and experimentation |
+| `screenshots/` | Project screenshots and demonstrations |
 | `src/` | Core preprocessing, training, evaluation, and prediction logic |
 | `tests/` | Automated unit and API tests |
 | `.github/workflows/` | GitHub Actions CI configuration |
@@ -453,12 +521,13 @@ Fake News Detection/
 
 ---
 
-## ⚙️ Installation & Usage
+##  Installation & Usage
 
 ### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/ayush-cpu-art/Fake-News-Detection.git
+
 cd Fake-News-Detection
 ```
 
@@ -468,6 +537,7 @@ cd Fake-News-Detection
 
 ```bash
 python -m venv .venv
+
 .venv\Scripts\activate
 ```
 
@@ -475,6 +545,7 @@ python -m venv .venv
 
 ```bash
 python3 -m venv .venv
+
 source .venv/bin/activate
 ```
 
@@ -550,7 +621,7 @@ docker compose down
 
 ---
 
-## ⚠️ Limitations
+##  Limitations
 
 - The model classifies news based on linguistic and statistical patterns learned from the IFND dataset.
 - It does not independently verify claims against external sources or fact-checking databases.
@@ -560,24 +631,24 @@ docker compose down
 
 ---
 
-## 🔮 Future Improvements
+##  Future Improvements
 
 Possible improvements include:
 
-- 🔎 Integrate external fact-checking and web retrieval
-- 🧠 Experiment with transformer-based models such as BERT
-- 📚 Implement Retrieval-Augmented Generation (RAG) for evidence retrieval
-- 📈 Add model performance monitoring
-- 🔄 Implement automated model retraining
-- 🗂️ Add dataset and model versioning
-- ☁️ Deploy the API and frontend to cloud infrastructure
-- 🔐 Add authentication and API security
-- 📊 Add production monitoring and logging
-- 🧪 Expand test coverage and integration tests
+-  Integrate external fact-checking and web retrieval
+-  Experiment with transformer-based models such as BERT
+-  Implement Retrieval-Augmented Generation (RAG) for evidence retrieval
+-  Add model performance monitoring
+-  Implement automated model retraining
+-  Add dataset and model versioning
+-  Deploy the API and frontend to cloud infrastructure
+-  Add authentication and API security
+-  Add production monitoring and logging
+-  Expand test coverage and integration tests
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 ### Programming Language
 
@@ -632,7 +703,7 @@ Possible improvements include:
 
 ---
 
-## 👨‍💻 Author
+##  Author
 
 **Ayush Dev**
 
@@ -640,11 +711,11 @@ B.Tech Computer Science & Engineering — AI & ML
 
 Interested in **Machine Learning, MLOps, AI, and Software Development**.
 
-- GitHub: [ayush-cpu-art](https://github.com/ayush-cpu-art)
+- GitHub: https://github.com/ayush-cpu-art
 - Email: ayushdev0408@gmail.com
 
 ---
 
-## 📄 License
+##  License
 
 This project is intended for educational and portfolio purposes.
