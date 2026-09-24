@@ -124,7 +124,7 @@ The raw dataset is preserved in `data/raw/`, while the cleaned dataset is stored
 
 ---
 
-## 🔤 Feature Engineering
+##  Feature Engineering
 
 TF-IDF (Term Frequency–Inverse Document Frequency) was used to convert news statements into numerical feature vectors.
 
@@ -314,7 +314,7 @@ The frontend sends the entered news statement to the FastAPI `/predict` endpoint
 
 ---
 
-## 📸 Screenshots
+##  Screenshots
 
 ### Streamlit Home Page
 
